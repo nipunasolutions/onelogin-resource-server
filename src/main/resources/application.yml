@@ -1,0 +1,36 @@
+
+server:
+  port: 8085
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  security:
+    oauth2:
+        provider:
+          onelogin:
+            clientId: <clientId>
+            clientSecret: <clientSecrete>
+            tokenUri: https://<customername>.onelogin.com/oidc/2/auth
+            authorizationUri: https://<customername>.onelogin.com/oidc/2/auth
+            userInfoUri: https://<customername>.onelogin.com/oidc/2/me
+            jwkSetUri: https://<customername>.onelogin.com/oidc/2/certs
+            tokenName: access_token
+            authenticationScheme: form
+            clientAuthenticationScheme: form
+            scope: [ email profile ]
+        registration:
+          onelogin:
+
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
+
+
